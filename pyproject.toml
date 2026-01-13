@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "payload_dumper_ndc"
+version = "0.4.2"
+description = "Dump partitions from Android's payload.bin"
+authors = ["yewgamer"]
+readme = "README.md"
+repository = "https://github.com/5ec1cff/payload-dumper"
+homepage = "https://github.com/5ec1cff/payload-dumper"
+
+[tool.poetry.scripts]
+payload_dumper_ndc = "payload_dumper_ndc:main"
+
+[tool.poetry.dependencies]
+python = ">=3.9" # protobuf runtime requires this
+httpx = ">=0.23.1"  # https://github.com/encode/httpx/pull/2309
+protobuf = "6.32.0"
+bsdiff4 = ">=1.2.3"  # This version officially supports Python 3.12
+enlighten = ">=1.12.0"  # This version officially supports Python 3.12
+#pywin32 = {version = "^311", platform = "win32"} # not required for now
+zstd = "^1.5.7.2"
+brotli = "^1.1.0"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[tool.isort]
+atomic = true
+profile = "black"
+line_length = 89
+skip_gitignore = true
+known_first_party = ["payload_dumper_ndc"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend= "poetry.core.masonry.api"
